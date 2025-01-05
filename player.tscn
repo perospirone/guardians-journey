@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://dhiljbhccac1t"]
+
+[ext_resource type="Texture2D" uid="uid://c1qamel2flhru" path="res://arts/pixelorama/frente.png" id="1_3k8pa"]
+[ext_resource type="Script" path="res://player.gd" id="1_etsp5"]
+[ext_resource type="Texture2D" uid="uid://c1357e5ejt3pi" path="res://arts/pixelorama/tras.png" id="2_6vj7l"]
+[ext_resource type="Texture2D" uid="uid://di4mja82n5oro" path="res://arts/pixelorama/esquerda.png" id="4_ca11y"]
+[ext_resource type="Texture2D" uid="uid://dik636jiwnlk7" path="res://arts/pixelorama/direita.png" id="5_8pigg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7acnn"]
+size = Vector2(20, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_soejs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6vj7l")
+}],
+"loop": true,
+"name": &"back",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3k8pa")
+}],
+"loop": true,
+"name": &"front",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ca11y")
+}],
+"loop": true,
+"name": &"left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8pigg")
+}],
+"loop": true,
+"name": &"right",
+"speed": 10.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_etsp5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_7acnn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_soejs")
+animation = &"front"
